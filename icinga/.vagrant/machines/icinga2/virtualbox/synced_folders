@@ -1,0 +1,1 @@
+{"rsync":{"/vagrant":{"type":"rsync","guestpath":"/vagrant","hostpath":"/Users/15472/Documents/virtual_machines/icinga","disabled":false,"__vagrantfile":true,"owner":"vagrant","group":"vagrant"}}}
