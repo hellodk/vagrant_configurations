@@ -19,7 +19,7 @@ end
     puppetS.vm.network :private_network, ip: "192.168.10.41"
     puppetS.vm.provider :virtualbox do |v|
       v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
-      v.customize ["modifyvm", :id, "--memory", 1024]
+      v.customize ["modifyvm", :id, "--memory", 512]
       v.customize ["modifyvm", :id, "--name", "puppetS"]
     end
   end
@@ -30,7 +30,7 @@ end
     puppetS2.vm.network :private_network, ip: "192.168.10.42"
     puppetS2.vm.provider :virtualbox do |v|
       v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
-      v.customize ["modifyvm", :id, "--memory", 1024]
+      v.customize ["modifyvm", :id, "--memory", 512]
       v.customize ["modifyvm", :id, "--name", "puppetS2"]
     end
 
