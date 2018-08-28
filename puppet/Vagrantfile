@@ -13,14 +13,14 @@ config.vm.provision "shell", inline: "apt-get install -y telnet wget curl vim &&
 end
 
 
-  config.vm.define "puppetS" do |puppetS|
-    puppetS.vm.box = "ubuntu/xenial64"
-    puppetS.vm.hostname = 'puppetS'
-    puppetS.vm.network :private_network, ip: "192.168.10.41"
-    puppetS.vm.provider :virtualbox do |v|
+  config.vm.define "puppetS1" do |puppetS1|
+    puppetS1.vm.box = "ubuntu/xenial64"
+    puppetS1.vm.hostname = 'puppetS1'
+    puppetS1.vm.network :private_network, ip: "192.168.10.41"
+    puppetS1.vm.provider :virtualbox do |v|
       v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
       v.customize ["modifyvm", :id, "--memory", 512]
-      v.customize ["modifyvm", :id, "--name", "puppetS"]
+      v.customize ["modifyvm", :id, "--name", "puppetS1"]
     end
   end
 
