@@ -1,0 +1,41 @@
+Vagrant.configure("2") do |config|
+config.vm.provision "shell", inline: "yum install -y epel-release telnet wget curl tree ntp vim net-tools && yum update -y && systemctl enable ntpd && sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/g' /etc/ssh/sshd_config && systemctl restart sshd"
+  config.vm.define "dockerM" do |dockerM|
+    dockerM.vm.box = "centos/7"
+    # dockerM.vm.box = "bento/ubuntu-18.04"
+    dockerM.vm.hostname = 'dockerM'
+    dockerM.vm.network :private_network, bridge: "en0: Wi-Fi (AirPort)", ip: "192.168.10.40"
+    dockerM.vm.provider :virtualbox do |v|
+      v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
+      v.customize ["modifyvm", :id, "--memory", 2048]
+      v.customize ["modifyvm", :id, "--cpus", 2]
+      v.customize ["modifyvm", :id, "--name", "dockerM"]
+  end
+end
+
+
+  config.vm.define "docker1" do |docker1|
+    docker1.vm.box = "centos/7"
+    docker1.vm.hostname = 'docker1'
+    docker1.vm.network :private_network, bridge: "en0: Wi-Fi (AirPort)", ip: "192.168.10.41"
+    docker1.vm.provider :virtualbox do |v|
+      v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
+      v.customize ["modifyvm", :id, "--memory", 2048]
+      v.customize ["modifyvm", :id, "--cpus", 2]
+      v.customize ["modifyvm", :id, "--name", "docker1"]
+    end
+  end
+
+  config.vm.define "docker2" do |docker2|
+    docker2.vm.box = "centos/7"
+    docker2.vm.hostname = 'docker2'
+    docker2.vm.network :private_network, bridge: "en0: Wi-Fi (AirPort)", ip: "192.168.10.42"
+    docker2.vm.provider :virtualbox do |v|
+      v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
+      v.customize ["modifyvm", :id, "--memory", 2048]
+      v.customize ["modifyvm", :id, "--cpus", 2]
+      v.customize ["modifyvm", :id, "--name", "docker2"]
+    end
+
+end
+end
